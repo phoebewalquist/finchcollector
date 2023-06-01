@@ -10,6 +10,10 @@
       <p>Description: {{ finche.description|linebreaks }}</p>
       <p>Color: {{ finche.color }}</p>
     </div>
+    <div class="card-action">
+      <a href="{% url 'finches_update' finche.id %}">Edit</a>
+      <a href="{% url 'finches_delete' finche.id %}">Delete</a>
+    </div> 
   </div>
 
 {% endblock %}
