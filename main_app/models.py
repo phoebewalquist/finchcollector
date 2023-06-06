@@ -8,10 +8,21 @@ MEALS = (
     
 )
 # Create your models here.
+class Toy(models.Model):
+  name = models.CharField(max_length=50)
+  color = models.CharField(max_length=20)
+
+  def __str__(self):
+    return self.name
+
+  def get_absolute_url(self):
+    return reverse('toys_detail', kwargs={'pk': self.id})
+
 class Finche(models.Model):
     breed = models.CharField(max_length=100)
     color = models.CharField(max_length=100)
     description = models.TextField(max_length=300)
+    toys = models.ManyToManyField(Toy)
 
     def __str__(self):
         return f'{self.breed} ({self.id})'
